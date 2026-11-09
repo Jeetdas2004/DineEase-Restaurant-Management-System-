@@ -1,0 +1,15 @@
+{
+  "name": "dineease-restaurant-management-system",
+  "version": "2.0.0",
+  "description": "Premium Full-Stack Restaurant Management & Dining Platform",
+  "private": true,
+  "scripts": {
+    "server": "npm --prefix backend run server",
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build"
+  },
+  "keywords": ["restaurant", "food-delivery", "table-booking", "mern", "react", "express", "mongodb"],
+  "author": "DineEase",
+  "license": "ISC"
+}
+
