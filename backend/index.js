@@ -17,10 +17,14 @@ dotenv.config();
 
 const app = express();
 
-// Ensure uploads folder exists
-const uploadsDir = path.resolve("uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+// Ensure uploads folder exists (safe for serverless read-only environments)
+const uploadsDir = process.env.VERCEL ? path.join("/tmp", "uploads") : path.resolve("uploads");
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (e) {
+  console.warn("Could not create uploads directory:", e.message);
 }
 
 // Middlewares
